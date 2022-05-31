@@ -1,7 +1,9 @@
+import Product from './Components/Product';
+
 function App() {
     return (
         <div>
-            <h1 className="text-9xl">Hello world!</h1>
+            <Product />
         </div>
     );
 }
