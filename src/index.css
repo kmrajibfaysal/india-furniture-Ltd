@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Karla:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .nav-link li {
+    @apply text-sm font-semibold hover:bg-transparent hover:text-primary;
+  }
+
+  .customer-logo img {
+    @apply w-[200px] md:w-[250px];
+  }
+}
+
+@layer base {
+  button:active,
+  button:focus {
+    @apply outline-none;
+  }
+}

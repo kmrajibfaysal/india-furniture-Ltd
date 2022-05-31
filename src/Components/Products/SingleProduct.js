@@ -1,22 +1,23 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 function SingleItem({ product }) {
     const { _id, name, seller, description, price, quantity, supplier, img } = product;
 
-    const navigate = useNavigate();
-
-    const handleManageItem = (id) => {
-        navigate(`/inventory/${id}`);
+    const handleAddToCart = (id) => {
+        console.log('added', id);
     };
 
     return (
         <div>
             <div className="mx-3 my-3 max-h-[600px] max-w-xs rounded-lg border border-gray-200 bg-white shadow-md ">
                 <a href="#">
-                    <img className="mx-auto max-h-[250px] rounded-t-lg pt-2" src={img} alt="" />
+                    <img
+                        className="mx-auto max-h-[250px] rounded-t-lg pt-2 transition-all duration-200 hover:scale-105"
+                        src={img}
+                        alt=""
+                    />
                 </a>
                 <div className="p-5">
                     <a href="#">
@@ -32,11 +33,11 @@ function SingleItem({ product }) {
                         <span>Supplier: {supplier}</span> <br />
                     </div>
                     <button
-                        onClick={() => handleManageItem(_id)}
+                        onClick={() => handleAddToCart(_id)}
                         type="button"
                         className="inline-flex items-center rounded-lg bg-sky-700 py-2 px-5 text-center text-sm font-medium text-white hover:bg-sky-800 focus:outline-none "
                     >
-                        Manage
+                        Add to cart
                         <svg
                             className="ml-2 -mr-1 h-4 w-4"
                             fill="currentColor"

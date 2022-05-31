@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import Contact from './Components/Contact/Contact';
 import Header from './Components/Header/Header';
 import Login from './Components/Login/Login';
 import Register from './Components/Login/Register';
@@ -12,6 +13,7 @@ function App() {
                 <Route path="/" element={<Product />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/contact" element={<Contact />} />
             </Routes>
         </div>
     );

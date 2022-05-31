@@ -7,6 +7,7 @@ import SingleProduct from './SingleProduct';
 
 function Product() {
     const [loading, setLoading] = useState(true);
+    const [cart, setCart] = useState([]);
 
     const [products, setProducts] = useState([]);
 
@@ -22,7 +23,7 @@ function Product() {
     }
 
     return (
-        <div className="mt-6 bg-gray-100 pb-6 pt-12">
+        <div className="bg-gray-100 pb-6 pt-12">
             <div className="container mx-auto">
                 <h1 className="text-center text-4xl">Our stock</h1>
                 <div className="mb-4 w-full">
