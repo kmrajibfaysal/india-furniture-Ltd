@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 
 import { useEffect, useState } from 'react';
+import Hero from '../../Hero/Hero';
 import Loading from '../Loading/Loading';
 import SingleProduct from './SingleProduct';
 
@@ -23,21 +24,24 @@ function Product() {
     }
 
     return (
-        <div className="bg-gray-100 pb-6 pt-12">
-            <div className="container mx-auto">
-                <h1 className="text-center text-4xl">Our stock</h1>
-                <div className="mb-4 w-full">
-                    <div className="mx-auto my-0 h-1 w-48 rounded-t bg-gradient-to-r from-sky-500 to-white py-0 " />
-                </div>
-                <div>
-                    <div className="align-center mx-auto flex max-w-[1368px] flex-wrap justify-center">
-                        {products.map((product) => (
-                            <SingleProduct key={product._id} product={product} />
-                        ))}
+        <>
+            <Hero />
+            <div id="products" className="bg-gray-100 pb-6 pt-12">
+                <div className="container mx-auto">
+                    <h1 className="text-center text-4xl">Our stock</h1>
+                    <div className="mb-4 w-full">
+                        <div className="mx-auto my-0 h-1 w-48 rounded-t bg-gradient-to-r from-sky-500 to-white py-0 " />
+                    </div>
+                    <div>
+                        <div className="align-center mx-auto flex max-w-[1368px] flex-wrap justify-center">
+                            {products.map((product) => (
+                                <SingleProduct key={product._id} product={product} />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

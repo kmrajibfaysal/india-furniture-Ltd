@@ -47,7 +47,7 @@ function Header() {
                             to="/"
                             className="cursor-pointer text-3xl font-bold normal-case  text-primary outline-none"
                         >
-                            CARPENCO
+                            India Furniture Ltd.
                         </Link>
                     </div>
                     <div className="navbar-end md:hidden">
