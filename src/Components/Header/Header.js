@@ -4,7 +4,7 @@ import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
-import auth from '../firebase.init';
+import auth from '../../firebase.init';
 
 function Header() {
     const [open, setOpen] = useState(false);
@@ -33,22 +33,6 @@ function Header() {
                 <div className="flex items-center md:order-2">
                     <div className="hidden md:block">
                         <div className="flex items-center">
-                            <ul
-                                className={`mt-4 mr-4 flex items-center  md:mt-0 md:space-x-4 md:text-sm md:font-medium lg:space-x-8 ${
-                                    user ? '' : 'hidden'
-                                }`}
-                            >
-                                <li>
-                                    <Link to="/addItem" className="nav-link">
-                                        Add item
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/myItems" className="nav-link">
-                                        My items
-                                    </Link>
-                                </li>
-                            </ul>
                             <button
                                 onClick={handleLoginLogOutButton}
                                 type="button"
@@ -121,18 +105,6 @@ function Header() {
                         </li>
                     </ul>
                     <div className="flex items-center justify-center md:hidden">
-                        <ul className={`${user ? '' : 'hidden'} flex flex-col items-center`}>
-                            <li>
-                                <Link to="/addItem" className="nav-link">
-                                    Add item
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/myItems" className="nav-link">
-                                    My items
-                                </Link>
-                            </li>
-                        </ul>
                         <button
                             onClick={handleLoginLogOutButton}
                             type="button"

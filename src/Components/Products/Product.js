@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 
 import { useEffect, useState } from 'react';
-import Loading from './Loading';
+import Loading from '../Loading/Loading';
 import SingleProduct from './SingleProduct';
 
 function Product() {

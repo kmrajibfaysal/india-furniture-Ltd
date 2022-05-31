@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import Header from './Components/Header';
-import Product from './Components/Product';
+import Header from './Components/Header/Header';
+import Login from './Components/Login/Login';
+import Register from './Components/Login/Register';
+import Product from './Components/Products/Product';
 
 function App() {
     return (
@@ -8,7 +10,8 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<Product />} />
-                <Route path="/login" element={<Product />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
             </Routes>
         </div>
     );
