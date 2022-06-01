@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Cart from './Cart/Cart';
 import Contact from './Components/Contact/Contact';
 import Header from './Components/Header/Header';
 import Login from './Components/Login/Login';
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/" element={<Product cart={cart} setCart={setCart} />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/cart" element={<Cart cart={cart} />} />
                 <Route path="/contact" element={<Contact />} />
             </Routes>
         </div>

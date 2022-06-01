@@ -9,12 +9,13 @@
 import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 
 function Header({ cart, setCart }) {
     const [user, loading] = useAuthState(auth);
+    const navigate = useNavigate();
     const [currentCart, setCurrentCart] = useState([]);
 
     const logOut = () => {
@@ -154,7 +155,10 @@ function Header({ cart, setCart }) {
                                     <span className="text-lg font-bold">8 Items</span>
                                     <span className="text-info">Subtotal: $999</span>
                                     <div className="card-actions">
-                                        <button className="btn btn-primary btn-block">
+                                        <button
+                                            onClick={() => navigate('/cart')}
+                                            className="btn btn-primary btn-block"
+                                        >
                                             View cart
                                         </button>
                                     </div>
