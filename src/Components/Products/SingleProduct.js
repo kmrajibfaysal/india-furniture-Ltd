@@ -2,12 +2,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 
-function SingleItem({ product }) {
+function SingleItem({ product, setCart, cart }) {
     const { _id, name, seller, description, price, quantity, supplier, img } = product;
 
-    const handleAddToCart = (id) => {
-        console.log('added', id);
-    };
+    // const handleAddToCart = async () => {
+    //     localStorage.setItem('product', JSON.stringify(product);
+    // };
 
     return (
         <div>
@@ -33,7 +33,10 @@ function SingleItem({ product }) {
                         <span>Supplier: {supplier}</span> <br />
                     </div>
                     <button
-                        onClick={() => handleAddToCart(_id)}
+                        onClick={() => {
+                            setCart([...cart, product]);
+                            console.log(cart.length);
+                        }}
                         type="button"
                         className="inline-flex items-center rounded-lg bg-sky-700 py-2 px-5 text-center text-sm font-medium text-white hover:bg-sky-800 focus:outline-none "
                     >

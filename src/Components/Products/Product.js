@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
 
@@ -6,9 +7,8 @@ import Hero from '../../Hero/Hero';
 import Loading from '../Loading/Loading';
 import SingleProduct from './SingleProduct';
 
-function Product() {
+function Product({ cart, setCart }) {
     const [loading, setLoading] = useState(true);
-    const [cart, setCart] = useState([]);
 
     const [products, setProducts] = useState([]);
 
@@ -18,6 +18,10 @@ function Product() {
             .then((data) => setProducts(data))
             .then(() => setLoading(false));
     }, []);
+
+    useEffect(() => {
+        localStorage.setItem('products', JSON.stringify(cart));
+    }, [cart]);
 
     if (loading) {
         return <Loading />;
@@ -35,7 +39,12 @@ function Product() {
                     <div>
                         <div className="align-center mx-auto flex max-w-[1368px] flex-wrap justify-center">
                             {products.map((product) => (
-                                <SingleProduct key={product._id} product={product} />
+                                <SingleProduct
+                                    setCart={setCart}
+                                    cart={cart}
+                                    key={product._id}
+                                    product={product}
+                                />
                             ))}
                         </div>
                     </div>

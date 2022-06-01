@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable react/button-has-type */
@@ -5,22 +7,25 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 
-function Header() {
+function Header({ cart, setCart }) {
     const [user, loading] = useAuthState(auth);
+    const [currentCart, setCurrentCart] = useState([]);
 
     const logOut = () => {
         signOut(auth);
         localStorage.removeItem('accessToken');
     };
+
     if (loading) {
         return <Loading />;
     }
+
     return (
         <nav className="sticky top-0 z-50 bg-[rgba(255,255,255,0.93)]  py-3">
             <div className="container  mx-auto">
@@ -102,22 +107,6 @@ function Header() {
                         </div>
                     </div>
                     <div className="navbar-end hidden md:flex">
-                        <ul className="nav-link menu menu-horizontal   cursor-pointer p-0 uppercase">
-                            <li>
-                                {!user ? (
-                                    <Link to="/login">Login</Link>
-                                ) : (
-                                    <button
-                                        type="button"
-                                        className="text-sm font-semibold uppercase hover:bg-transparent hover:text-primary"
-                                        onClick={logOut}
-                                    >
-                                        Sign out
-                                    </button>
-                                )}
-                            </li>
-                        </ul>
-                        {/* search button */}
                         <button className="btn btn-ghost btn-circle">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -134,22 +123,84 @@ function Header() {
                                 />
                             </svg>
                         </button>
-                        {/* notification button */}
-                        <button className="btn btn-ghost btn-circle">
-                            <div className="indicator">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-5 w-5"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                >
-                                    <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                                </svg>
-                                <span className="badge indicator-item badge-xs badge-primary">
-                                    3
-                                </span>
+                        {/* cart */}
+                        <div className="dropdown-end dropdown">
+                            <label tabIndex="0" className="btn btn-ghost btn-circle">
+                                <div className="indicator">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="h-5 w-5"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                                        />
+                                    </svg>
+                                    <span className="badge indicator-item badge-sm text-primary">
+                                        {cart.length}
+                                    </span>
+                                </div>
+                            </label>
+                            <div
+                                tabIndex="0"
+                                className="card dropdown-content card-compact mt-3 w-52 bg-base-100 shadow"
+                            >
+                                <div className="card-body">
+                                    <span className="text-lg font-bold">8 Items</span>
+                                    <span className="text-info">Subtotal: $999</span>
+                                    <div className="card-actions">
+                                        <button className="btn btn-primary btn-block">
+                                            View cart
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                        </button>
+                        </div>
+                        <div className="dropdown-end dropdown">
+                            <label tabIndex="0" className="avatar btn btn-ghost btn-circle">
+                                <div className="w-10 rounded-full">
+                                    <img
+                                        src={
+                                            user?.photoURL
+                                                ? user.photoURL
+                                                : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
+                                        }
+                                    />
+                                </div>
+                            </label>
+                            <ul
+                                tabIndex="0"
+                                className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
+                            >
+                                <li>
+                                    <a className="justify-between">
+                                        Profile
+                                        <span className="badge">New</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>Settings</a>
+                                </li>
+                                <li>
+                                    {!user ? (
+                                        <Link to="/login">Login</Link>
+                                    ) : (
+                                        <button
+                                            type="button"
+                                            className="text-sm font-semibold uppercase hover:bg-transparent hover:text-primary"
+                                            onClick={logOut}
+                                        >
+                                            Sign out
+                                        </button>
+                                    )}
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
