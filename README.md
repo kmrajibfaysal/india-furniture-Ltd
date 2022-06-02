@@ -1,9 +1,12 @@
-# This is a template repo to generate full configured react project with tailwind configurations and eslint set up for auto correction!
+## A simple demo e-commerce project
 
-## You need to use this repo as template to generate new repo you desire!
+# Live link: https://india-furniture-ltd.web.app/
 
-## To install dependencies just run `yarn install` or `npm install`
+Technologies Used:
 
-## Or if you want to clone it directly, just clone it and delete the .git folder from the cloned folder then you will get fresh folder to work with, then you can run git init and other git command to push it back to your github account as a new project!
-
-# Happy coding!!!!
+- React
+- TailwindCSS
+- Daisyui
+- React Router
+- React Query
+- MongoDB
