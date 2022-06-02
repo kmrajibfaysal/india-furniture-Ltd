@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Cart from './Cart/Cart';
 import Contact from './Components/Contact/Contact';
+import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import Login from './Components/Login/Login';
 import Register from './Components/Login/Register';
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/cart" element={<Cart cart={cart} />} />
                 <Route path="/contact" element={<Contact />} />
             </Routes>
+            <Footer />
         </div>
     );
 }

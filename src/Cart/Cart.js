@@ -3,9 +3,28 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import SingleItem from './SingleItem';
 
 function Cart({ cart }) {
+    const navigate = useNavigate();
+    if (cart.length === 0) {
+        return (
+            <div className="flex min-h-[400px] flex-col items-center justify-center">
+                <h2 className="text-4xl">Cart is empty!</h2>
+                <button
+                    onClick={() => navigate('/')}
+                    href="#"
+                    className="mt-10 flex text-sm font-semibold text-indigo-600"
+                >
+                    <svg className="mr-2 w-4 fill-current text-indigo-600" viewBox="0 0 448 512">
+                        <path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" />
+                    </svg>
+                    Continue Shopping
+                </button>
+            </div>
+        );
+    }
     return (
         <div className="bg-gray-100">
             <div className="container mx-auto mt-10">
