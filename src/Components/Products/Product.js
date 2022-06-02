@@ -24,7 +24,11 @@ function Product({ cart, setCart }) {
     }, [cart]);
 
     const handleFilter = async (event) => {
-        await setSelected(event.target.value);
+        if (event.target.value === 'Filters') {
+            await setSelected('');
+        } else {
+            await setSelected(event.target.value);
+        }
     };
 
     if (loading) {
@@ -46,9 +50,7 @@ function Product({ cart, setCart }) {
                         onChange={handleFilter}
                         className="select select-bordered max-w-xs"
                     >
-                        <option disabled selected>
-                            Filters
-                        </option>
+                        <option selected>Filters</option>
                         <option>bed</option>
                         <option>wardrobe</option>
                         <option>chair</option>
